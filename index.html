@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Snake — Full Features (Mahesh)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="game-wrap">
+      <div>
+        <div class="board" id="board" aria-label="snake board"></div>
+      </div>
+
+      <aside class="panel">
+        <h2>Snake — Full Features</h2>
+
+        <div class="stats">
+          <div class="stat">
+            <span>Score</span
+            ><strong id="score"><span class="score-anim">0</span></strong>
+          </div>
+          <div class="stat">
+            <span>High Score</span><strong id="high-score">0</strong>
+          </div>
+          <div class="stat">
+            <span>Time</span><strong id="time">00:00</strong>
+          </div>
+          <div class="stat">
+            <span>Level</span><strong id="level">1</strong>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="btn-start primary" id="startBtn">Start</button>
+          <button class="btn-pause" id="pauseBtn">Pause</button>
+          <button class="btn-restart" id="resetBtn">Restart</button>
+          <button class="btn-sound" id="soundBtn">🔊 Sound: On</button>
+        </div>
+
+        <div class="hint">
+          Use arrow keys to move. Click Start to begin. Pause will freeze the
+          game.
+        </div>
+        <div class="footer">
+          Features: body-collision, timer, sound, levels, pause, safe-food,
+          score animation.
+        </div>
+      </aside>
+    </div>
+
+    <!-- Game Over Modal -->
+    <div id="gameOverModal" class="modal" style="display: none">
+      <div class="card">
+        <h3>Game Over</h3>
+        <p>Your score: <strong id="finalScore">0</strong></p>
+        <div class="modal-buttons">
+          <button id="tryAgain">Try Again</button>
+          <button id="closeModal">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

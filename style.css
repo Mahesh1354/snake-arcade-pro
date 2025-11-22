@@ -1,0 +1,198 @@
+:root {
+  --cell-size: 30px;
+  --cols: 20;
+  --rows: 20;
+  --bg: #0a0f1f;
+  --primary: #4f7cff;
+  --snake: #4f7cff;
+  --snake-head: #82a3ff;
+  --food: #ff4757;
+  --panel-bg: #0f172a;
+  --text: #e8ecf5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, Segoe UI, Arial;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  padding: 30px;
+  align-items: flex-start;
+}
+
+.game-wrap {
+  display: flex;
+  gap: 30px;
+}
+
+/* Modern Glass Board */
+.board {
+  width: calc(var(--cols) * var(--cell-size));
+  height: calc(var(--rows) * var(--cell-size));
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--cell-size));
+  grid-template-rows: repeat(var(--rows), var(--cell-size));
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+/* Smooth modern pixel feel */
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  transition: background 0.15s;
+}
+
+.cell.fill {
+  background: var(--snake);
+}
+
+.cell.head {
+  background: var(--snake-head);
+}
+
+.cell.food {
+  background: var(--food);
+}
+
+/* Score Animation */
+.score-anim {
+  display: inline-block;
+  transition: transform 0.16s;
+}
+
+.score-anim.pop {
+  transform: scale(1.4);
+}
+
+/* Modern Panel */
+.panel {
+  width: 280px;
+  padding: 20px;
+  background: var(--panel-bg);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.panel h2 {
+  text-align: center;
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  transition: 0.2s;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+button.primary {
+  background: var(--primary);
+  color: white;
+}
+
+button.primary:hover {
+  background: #6c92ff;
+}
+
+.hint {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.footer {
+  font-size: 12px;
+  opacity: 0.6;
+  line-height: 1.4;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.card {
+  padding: 26px;
+  background: var(--panel-bg);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .game-wrap {
+    flex-direction: column;
+  }
+  
+  .panel {
+    width: 100%;
+    max-width: 400px;
+  }
+}
